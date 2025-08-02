@@ -1,25 +1,239 @@
-<h1>Infinity Mirror Controller</h1>
-<h2>操作パネル </h2>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Mirror Controller</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .mode-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            border: none;
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .mode-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mode-button:active {
+            transform: translateY(0);
+        }
+        
+        .mode-button.rainbow { background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef); }
+        .mode-button.sparkle { background: linear-gradient(45deg, #a8edea, #fed6e3); }
+        .mode-button.blackhole { background: linear-gradient(45deg, #2c3e50, #4a6741); }
+        .mode-button.solid { background: linear-gradient(45deg, #ff6b6b, #ee5a24); }
+        .mode-button.segment { background: linear-gradient(45deg, #4ecdc4, #44a08d); }
+        .mode-button.chase { background: linear-gradient(45deg, #f093fb, #f5576c); }
+        .mode-button.breath { background: linear-gradient(45deg, #4facfe, #00f2fe); }
+        .mode-button.random { background: linear-gradient(45deg, #43e97b, #38f9d7); }
+        .mode-button.twinkle { background: linear-gradient(45deg, #fa709a, #fee140); }
+        
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        
+        .connect-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .connect-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🪞 Infinity Mirror Controller</h1>
+        <h2>LED制御パネル</h2>
+        
+        <button class="connect-button" onclick="connect()">🔗 BLE接続</button>
+        
+        <div class="button-grid">
+            <button class="mode-button rainbow" onclick="sendCommand('MODE:0')">
+                <span class="emoji">🌈</span>レインボー
+            </button>
+            <button class="mode-button sparkle" onclick="sendCommand('MODE:1')">
+                <span class="emoji">✨</span>スパークル
+            </button>
+            <button class="mode-button blackhole" onclick="sendCommand('MODE:2')">
+                <span class="emoji">🕳️</span>ブラックホール
+            </button>
+            <button class="mode-button solid" onclick="sendCommand('MODE:3')">
+                <span class="emoji">🔴</span>単色（赤）
+            </button>
+            <button class="mode-button segment" onclick="sendCommand('MODE:4')">
+                <span class="emoji">🎨</span>セグメント色分け
+            </button>
+            <button class="mode-button chase" onclick="sendCommand('MODE:5')">
+                <span class="emoji">🏃</span>チェイシングライト
+            </button>
+            <button class="mode-button breath" onclick="sendCommand('MODE:6')">
+                <span class="emoji">💙</span>ブリージング効果
+            </button>
+            <button class="mode-button random" onclick="sendCommand('MODE:7')">
+                <span class="emoji">🎲</span>ランダムピクセル
+            </button>
+            <button class="mode-button twinkle" onclick="sendCommand('MODE:8')">
+                <span class="emoji">⭐</span>トゥインクル
+            </button>
+        </div>
+        
+        <div class="status" id="status">
+            BLE接続ボタンを押してデバイスに接続してください
+        </div>
+    </div>
 
-<button onclick="sendCommand('MODE:0')">🌈 レインボー</button>
-<button onclick="sendCommand('MODE:1')">✨ スパークル</button>
-<button onclick="sendCommand('MODE:2')">🕳 ブラックホール</button>
+    <script>
+        let characteristic;
+        let isConnected = false;
 
-<script>
-let characteristic;
+        async function connect() {
+            try {
+                updateStatus("BLEデバイスを検索中...");
+                
+                const device = await navigator.bluetooth.requestDevice({
+                    filters: [{ namePrefix: "InfinityMirror" }],
+                    optionalServices: ["12345678-1234-1234-1234-1234567890ab"]
+                });
+                
+                updateStatus("デバイスに接続中...");
+                const server = await device.gatt.connect();
+                
+                updateStatus("サービスを取得中...");
+                const service = await server.getPrimaryService("12345678-1234-1234-1234-1234567890ab");
+                
+                updateStatus("キャラクタリスティックを取得中...");
+                characteristic = await service.getCharacteristic("abcd1234-5678-90ab-cdef-1234567890ab");
+                
+                isConnected = true;
+                updateStatus("✅ 接続完了！LEDパターンを選択してください");
+                
+                // 接続が切断された時の処理
+                device.addEventListener('gattserverdisconnected', () => {
+                    isConnected = false;
+                    characteristic = null;
+                    updateStatus("❌ デバイスとの接続が切断されました");
+                });
+                
+            } catch (error) {
+                console.error('BLE接続エラー:', error);
+                updateStatus("❌ 接続に失敗しました: " + error.message);
+            }
+        }
 
-async function connect() {
-  const device = await navigator.bluetooth.requestDevice({
-    filters: [{ namePrefix: "InfinityMirror" }],
-    optionalServices: ["12345678-1234-1234-1234-1234567890ab"]
-  });
-  const server = await device.gatt.connect();
-  const service = await server.getPrimaryService("12345678-1234-1234-1234-1234567890ab");
-  characteristic = await service.getCharacteristic("abcd1234-5678-90ab-cdef-1234567890ab");
-}
+        async function sendCommand(cmd) {
+            try {
+                if (!characteristic) {
+                    updateStatus("先にBLE接続を行ってください");
+                    return;
+                }
+                
+                updateStatus(`コマンド送信中: ${cmd}`);
+                await characteristic.writeValueWithResponse(new TextEncoder().encode(cmd));
+                updateStatus(`✅ コマンド送信完了: ${cmd}`);
+                
+            } catch (error) {
+                console.error('コマンド送信エラー:', error);
+                updateStatus("❌ コマンド送信に失敗しました: " + error.message);
+            }
+        }
 
-async function sendCommand(cmd) {
-  if (!characteristic) await connect();
-  await characteristic.writeValueWithResponse(new TextEncoder().encode(cmd));
-}
-</script>
+        function updateStatus(message) {
+            document.getElementById('status').textContent = message;
+        }
+
+        // ページ読み込み時の初期化
+        window.addEventListener('load', () => {
+            if (!navigator.bluetooth) {
+                updateStatus("❌ このブラウザはWeb Bluetooth APIに対応していません");
+            }
+        });
+    </script>
+</body>
+</html>
+
