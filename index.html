@@ -45,16 +45,19 @@
             margin-bottom: 30px;
         }
         
-        .mode-button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        .button {
             border: none;
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 0;
             color: white;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
+        }
+
+        .mode-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            padding: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
@@ -89,16 +92,9 @@
         
         .connect-button {
             background: linear-gradient(45deg, #667eea, #764ba2);
-            border: none;
-            border-radius: 10px;
             padding: 15px 30px;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
             margin: 20px auto;
             display: block;
-            transition: all 0.3s ease;
         }
         
         .connect-button:hover {
@@ -131,34 +127,34 @@
         <h1>🪞 Infinity Mirror Controller</h1>
         <h2>LED制御パネル</h2>
         
-        <button class="connect-button" onclick="connect()">🔗 BLE接続</button>
+        <button class="button connect-button" onclick="connect()">🔗 BLE接続</button>
         
         <div class="button-grid">
-            <button class="mode-button rainbow" onclick="sendCommand('MODE:0')">
+            <button class="button mode-button rainbow" onclick="sendCommand('MODE:0')">
                 <span class="emoji">🌈</span>レインボー
             </button>
-            <button class="mode-button sparkle" onclick="sendCommand('MODE:1')">
+            <button class="button mode-button sparkle" onclick="sendCommand('MODE:1')">
                 <span class="emoji">✨</span>スパークル
             </button>
-            <button class="mode-button blackhole" onclick="sendCommand('MODE:2')">
+            <button class="button mode-button blackhole" onclick="sendCommand('MODE:2')">
                 <span class="emoji">🕳️</span>ブラックホール
             </button>
-            <button class="mode-button solid" onclick="sendCommand('MODE:3')">
+            <button class="button mode-button solid" onclick="sendCommand('MODE:3')">
                 <span class="emoji">🔵</span>単色（青）
             </button>
-            <button class="mode-button segment" onclick="sendCommand('MODE:4')">
+            <button class="button mode-button segment" onclick="sendCommand('MODE:4')">
                 <span class="emoji">🎨</span>セグメント色分け
             </button>
-            <button class="mode-button chase" onclick="sendCommand('MODE:5')">
+            <button class="button mode-button chase" onclick="sendCommand('MODE:5')">
                 <span class="emoji">🏃</span>チェイシングライト
             </button>
-            <button class="mode-button breath" onclick="sendCommand('MODE:6')">
+            <button class="button mode-button breath" onclick="sendCommand('MODE:6')">
                 <span class="emoji">💙</span>ブリージング効果
             </button>
-            <button class="mode-button random" onclick="sendCommand('MODE:7')">
+            <button class="button mode-button random" onclick="sendCommand('MODE:7')">
                 <span class="emoji">🎲</span>ランダムピクセル
             </button>
-            <button class="mode-button twinkle" onclick="sendCommand('MODE:8')">
+            <button class="button mode-button twinkle" onclick="sendCommand('MODE:8')">
                 <span class="emoji">⭐</span>トゥインクル
             </button>
         </div>
