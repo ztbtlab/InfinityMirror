@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
             min-height: 100vh;
             color: white;
         }
-        
+
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -23,28 +24,28 @@
             padding: 30px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
-        
+
         h1 {
             text-align: center;
             margin-bottom: 10px;
             font-size: 2.5em;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        
+
         h2 {
             text-align: center;
             margin-bottom: 30px;
             font-size: 1.2em;
             opacity: 0.8;
         }
-        
+
         .button-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
             margin-bottom: 30px;
         }
-        
+
         .mode-button {
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             border: none;
@@ -58,26 +59,125 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
-        
+
         .mode-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
-        
+
         .mode-button:active {
             transform: translateY(0);
         }
-        
-        .mode-button.rainbow { background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef); }
-        .mode-button.sparkle { background: linear-gradient(45deg, #a8edea, #fed6e3); }
-        .mode-button.blackhole { background: linear-gradient(45deg, #2c3e50, #4a6741); }
-        .mode-button.solid { background: linear-gradient(45deg, #4facfe, #00f2fe); }
-        .mode-button.segment { background: linear-gradient(45deg, #4ecdc4, #44a08d); }
-        .mode-button.chase { background: linear-gradient(45deg, #f093fb, #f5576c); }
-        .mode-button.breath { background: linear-gradient(45deg, #4facfe, #00f2fe); }
-        .mode-button.random { background: linear-gradient(45deg, #43e97b, #38f9d7); }
-        .mode-button.twinkle { background: linear-gradient(45deg, #fa709a, #fee140); }
-        
+
+        .mode-button.rainbow {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef);
+        }
+
+        .mode-button.sparkle {
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+        }
+
+        .mode-button.blackhole {
+            background: linear-gradient(45deg, #2c3e50, #4a6741);
+        }
+
+        .mode-button.solid {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+        }
+
+        .mode-button.segment {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+        }
+
+        .mode-button.chase {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+        }
+
+        .mode-button.breath {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+        }
+
+        .mode-button.random {
+            background: linear-gradient(45deg, #43e97b, #38f9d7);
+        }
+
+        .mode-button.twinkle {
+            background: linear-gradient(45deg, #fa709a, #fee140);
+        }
+
+        .control-group {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .slider {
+            flex-grow: 1;
+            height: 10px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+
+        .color-picker-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        input[type="color"] {
+            -webkit-appearance: none;
+            appearance: none;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            background: none;
+        }
+
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+
+        .mode-button.active {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+            border: 2px solid white;
+        }
+
         .status {
             text-align: center;
             margin-top: 20px;
@@ -86,7 +186,7 @@
             border-radius: 10px;
             font-size: 14px;
         }
-        
+
         .connect-button {
             background: linear-gradient(45deg, #667eea, #764ba2);
             border: none;
@@ -100,69 +200,89 @@
             display: block;
             transition: all 0.3s ease;
         }
-        
+
         .connect-button:hover {
             transform: scale(1.05);
         }
-        
+
         .emoji {
             font-size: 1.5em;
             margin-right: 10px;
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
                 margin: 10px;
             }
-            
+
             .button-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             h1 {
                 font-size: 2em;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>🪞 Infinity Mirror Controller</h1>
         <h2>LED制御パネル</h2>
-        
+
         <button class="connect-button" onclick="connect()">🔗 BLE接続</button>
-        
+
+        <div class="control-group">
+            <div class="slider-container">
+                <span>🔆 明るさ</span>
+                <input type="range" min="0" max="100" value="50" class="slider" id="brightnessSlider"
+                    oninput="updateBrightness(this.value)">
+                <span id="brightnessValue">50%</span>
+            </div>
+            <div class="slider-container">
+                <span>🚀 速度</span>
+                <input type="range" min="0" max="100" value="50" class="slider" id="speedSlider"
+                    oninput="updateSpeed(this.value)">
+                <span id="speedValue">50%</span>
+            </div>
+            <div class="color-picker-container">
+                <span>🎨 自由色指定</span>
+                <input type="color" id="colorPicker" value="#0000ff" onchange="updateColor(this.value)">
+            </div>
+        </div>
+
         <div class="button-grid">
-            <button class="mode-button rainbow" onclick="sendCommand('MODE:0')">
+            <button class="mode-button rainbow" onclick="sendCommand('MODE:0', this)">
                 <span class="emoji">🌈</span>レインボー
             </button>
-            <button class="mode-button sparkle" onclick="sendCommand('MODE:1')">
+            <button class="mode-button sparkle" onclick="sendCommand('MODE:1', this)">
                 <span class="emoji">✨</span>スパークル
             </button>
-            <button class="mode-button blackhole" onclick="sendCommand('MODE:2')">
+            <button class="mode-button blackhole" onclick="sendCommand('MODE:2', this)">
                 <span class="emoji">🕳️</span>ブラックホール
             </button>
-            <button class="mode-button solid" onclick="sendCommand('MODE:3')">
+            <button class="mode-button solid" onclick="sendCommand('MODE:3', this)">
                 <span class="emoji">🔵</span>単色（青）
             </button>
-            <button class="mode-button segment" onclick="sendCommand('MODE:4')">
+            <button class="mode-button segment" onclick="sendCommand('MODE:4', this)">
                 <span class="emoji">🎨</span>セグメント色分け
             </button>
-            <button class="mode-button chase" onclick="sendCommand('MODE:5')">
+            <button class="mode-button chase" onclick="sendCommand('MODE:5', this)">
                 <span class="emoji">🏃</span>チェイシングライト
             </button>
-            <button class="mode-button breath" onclick="sendCommand('MODE:6')">
+            <button class="mode-button breath" onclick="sendCommand('MODE:6', this)">
                 <span class="emoji">💙</span>ブリージング効果
             </button>
-            <button class="mode-button random" onclick="sendCommand('MODE:7')">
+            <button class="mode-button random" onclick="sendCommand('MODE:7', this)">
                 <span class="emoji">🎲</span>ランダムピクセル
             </button>
-            <button class="mode-button twinkle" onclick="sendCommand('MODE:8')">
+            <button class="mode-button twinkle" onclick="sendCommand('MODE:8', this)">
                 <span class="emoji">⭐</span>トゥインクル
             </button>
         </div>
-        
+
         <div class="status" id="status">
             BLE接続ボタンを押してデバイスに接続してください
         </div>
@@ -171,56 +291,99 @@
     <script>
         let characteristic;
         let isConnected = false;
+        let lastSendTime = 0;
+        const SEND_INTERVAL = 100; // コマンド送信間隔（ms）
 
         async function connect() {
             try {
                 updateStatus("BLEデバイスを検索中...");
-                
+
                 const device = await navigator.bluetooth.requestDevice({
                     filters: [{ namePrefix: "InfinityMirror" }],
                     optionalServices: ["12345678-1234-1234-1234-1234567890ab"]
                 });
-                
+
                 updateStatus("デバイスに接続中...");
                 const server = await device.gatt.connect();
-                
+
                 updateStatus("サービスを取得中...");
                 const service = await server.getPrimaryService("12345678-1234-1234-1234-1234567890ab");
-                
+
                 updateStatus("キャラクタリスティックを取得中...");
                 characteristic = await service.getCharacteristic("abcd1234-5678-90ab-cdef-1234567890ab");
-                
+
                 isConnected = true;
                 updateStatus("✅ 接続完了！LEDパターンを選択してください");
-                
+
                 // 接続が切断された時の処理
                 device.addEventListener('gattserverdisconnected', () => {
                     isConnected = false;
                     characteristic = null;
                     updateStatus("❌ デバイスとの接続が切断されました");
                 });
-                
+
             } catch (error) {
                 console.error('BLE接続エラー:', error);
                 updateStatus("❌ 接続に失敗しました: " + error.message);
             }
         }
 
-        async function sendCommand(cmd) {
+        async function sendCommand(cmd, btnElement) {
             try {
                 if (!characteristic) {
                     updateStatus("先にBLE接続を行ってください");
                     return;
                 }
-                
+
                 updateStatus(`コマンド送信中: ${cmd}`);
                 await characteristic.writeValueWithResponse(new TextEncoder().encode(cmd));
                 updateStatus(`✅ コマンド送信完了: ${cmd}`);
-                
+
+                // ボタンのハイライト処理
+                if (btnElement) {
+                    document.querySelectorAll('.mode-button').forEach(b => b.classList.remove('active'));
+                    btnElement.classList.add('active');
+                }
+
             } catch (error) {
                 console.error('コマンド送信エラー:', error);
                 updateStatus("❌ コマンド送信に失敗しました: " + error.message);
             }
+        }
+
+        // スロットリング付きコマンド送信（スライダー用）
+        async function sendThrottledCommand(cmd) {
+            const now = Date.now();
+            if (now - lastSendTime < SEND_INTERVAL) return;
+
+            lastSendTime = now;
+            try {
+                if (characteristic) {
+                    await characteristic.writeValueWithResponse(new TextEncoder().encode(cmd));
+                }
+            } catch (error) {
+                console.error('コマンド送信エラー:', error);
+            }
+        }
+
+        function updateBrightness(val) {
+            document.getElementById('brightnessValue').textContent = val + '%';
+            sendThrottledCommand(`BRIGHTNESS:${val}`);
+        }
+
+        function updateSpeed(val) {
+            document.getElementById('speedValue').textContent = val + '%';
+            sendThrottledCommand(`SPEED:${val}`);
+        }
+
+        function updateColor(hex) {
+            // HEX to RGB
+            const r = parseInt(hex.substr(1, 2), 16);
+            const g = parseInt(hex.substr(3, 2), 16);
+            const b = parseInt(hex.substr(5, 2), 16);
+
+            const cmd = `COLOR:${r},${g},${b}`;
+            sendCommand(cmd); // 色変更は即時反映したいので通常のsendCommandを使用
         }
 
         function updateStatus(message) {
@@ -235,5 +398,5 @@
         });
     </script>
 </body>
-</html>
 
+</html>
